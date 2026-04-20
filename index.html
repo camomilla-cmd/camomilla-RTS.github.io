@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>App 6 | Patient Monitoring Demo</title>
+  <meta
+    name="description"
+    content="A simple GitHub Pages site for App 6, an embedded patient monitoring demo built with ESP32, FreeRTOS, LEDs, an OLED display, and sensor-based alerts."
+  >
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <p class="eyebrow">Real-Time Systems Project</p>
+      <h1>App 6: Patient Monitoring Demo</h1>
+      <p class="lead">
+        This project demonstrates a small embedded patient monitoring system that reacts to changing sensor values
+        and emergency input in real time. It uses an ESP32 running FreeRTOS to coordinate multiple tasks, display
+        patient status on an OLED screen, and trigger visual alerts with LEDs.
+      </p>
+      <a class="button" href="#demo">Watch the Demo</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="section">
+      <div class="container grid two-column">
+        <div>
+          <h2>Project Overview</h2>
+          <p>
+            App 6 simulates a patient assistance and monitoring device. The system reads a sensor value, checks whether
+            it crosses a threshold, and updates outputs to help communicate the patient's status. A button interrupt also
+            allows the system to trigger an emergency-style alert for a fall or assistance event.
+          </p>
+          <p>
+            The program is designed around multitasking, which means several jobs run at the same time: reading sensor
+            data, handling alerts, updating the OLED display, and blinking a heartbeat LED to show that the device is active.
+          </p>
+        </div>
+        <div class="card">
+          <h2>Key Features</h2>
+          <ul>
+            <li>Reads analog sensor input on the ESP32.</li>
+            <li>Uses FreeRTOS tasks for concurrent system behavior.</li>
+            <li>Displays patient status messages on an OLED screen.</li>
+            <li>Turns on a red LED during alert conditions.</li>
+            <li>Uses a button interrupt to simulate a patient fall or assistance event.</li>
+            <li>Logs system activity through serial output for debugging and observation.</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="container">
+        <h2>How It Works</h2>
+        <div class="grid three-column">
+          <article class="card">
+            <h3>Monitoring</h3>
+            <p>
+              A task continuously reads the sensor value and sends the latest data through a queue so other parts of the
+              system can respond without blocking one another.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Alerts</h3>
+            <p>
+              When the sensor rises above the configured threshold, the system shows a warning on the OLED display and
+              turns on the red LED to indicate a possible problem.
+            </p>
+          </article>
+          <article class="card">
+            <h3>Emergency Input</h3>
+            <p>
+              A button interrupt simulates a patient emergency event. When triggered, the display changes to a fall alert
+              message and the alert LED activates.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="demo">
+      <div class="container">
+        <h2>Demo Video</h2>
+        <p>
+          Upload your demo video to YouTube, then replace the placeholder video ID in the iframe below with your own
+          YouTube video ID.
+        </p>
+
+        <div class="video-wrapper">
+          <iframe
+            src="https://www.youtube.com/embed/YOUTUBE_VIDEO_ID"
+            title="App 6 demo video"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen
+          ></iframe>
+        </div>
+
+        <p class="note">
+          Replace <code>YOUTUBE_VIDEO_ID</code> with the value from your video URL.
+          Example: for <code>https://www.youtube.com/watch?v=abc123xyz</code>, use <code>abc123xyz</code>.
+        </p>
+
+        <h3>Local Video Preview</h3>
+        <p>
+          Until the YouTube upload is ready, this page can also preview the local demo file included in the repository.
+        </p>
+
+        <video class="local-video" controls preload="metadata">
+          <source src="application6.mp4" type="video/mp4">
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </section>
+
+    <section class="section alt">
+      <div class="container">
+        <h2>Source File</h2>
+        <p>
+          The program logic for this project is included in the repository as <a href="App6">App6</a>.
+          It implements the multitasking, queue communication, interrupt handling, and display updates shown in the demo.
+        </p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <p>Built for a Real-Time Systems course project using ESP32, FreeRTOS, and GitHub Pages.</p>
+    </div>
+  </footer>
+</body>
+</html>
